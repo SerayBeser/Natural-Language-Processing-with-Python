@@ -53,29 +53,24 @@ def bag_of_words(texts, mode='count'):
     indexes = range(0, len(labels))
     vocabulary = collections.OrderedDict(sorted(dict(zip(labels, indexes)).items()))
 
-    if str(mode) == 'count':
-        bows = list()
-        count = 0
-        for text in texts:
-            bow = list()
-            for v in vocabulary:
+    bows = list()
+    count = 0
+
+    for text in texts:
+        bow = list()
+        for v in vocabulary:
+            if str(mode) == 'count':
                 for t in cleaning_and_stemming(text.lower(), stemming=False, stopword=False):
                     if str(t) == str(v):
                         count += 1
                 bow.append(count)
                 count = 0
-            bows.append(bow)
-
-    if str(mode) == 'binary':
-        bows = list()
-        for text in texts:
-            bow = list()
-            for v in vocabulary:
+            if str(mode) == 'binary':
                 if str(v) in cleaning_and_stemming(text.lower(), stemming=False, stopword=False):
                     bow.append(1)
                 else:
                     bow.append(0)
-            bows.append(bow)
+        bows.append(bow)
 
     return np.asanyarray(bows)
 

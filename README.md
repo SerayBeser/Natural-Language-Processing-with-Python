@@ -5,7 +5,11 @@
 __Lessons__
 
 course 01 : Mini NLP Tasks
+
+
 [preprocessing](https://github.com/SerayBeser/Natural-Language-Processing-with-Python/blob/master/course%2001%20:%20Mini%20NLP%20Tasks/preprocessing.py)
+
+
 __Cleaning__
 1- Select Only Words, sadece kelimeleri secmek.
 2- Remove Punctuation, noktalama isaretlerini silmek.
@@ -18,7 +22,11 @@ __Cleaning__
 
        
 [bag of words](https://github.com/SerayBeser/Natural-Language-Processing-with-Python/blob/master/course%2001%20:%20Mini%20NLP%20Tasks/bag_of_words.py)
+
+
 [bag of words with keras](https://github.com/SerayBeser/Natural-Language-Processing-with-Python/blob/master/course%2001%20:%20Mini%20NLP%20Tasks/bag_of_words_keras.py)
+
+
 __Bag of Words -  Kelime Cantasi__
 Bag of Words (BoW) is a model used in natural language processing.
 One aim of BoW is to categorize documents.

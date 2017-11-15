@@ -58,18 +58,25 @@ def bag_of_words(texts, mode='count'):
 
     for text in texts:
         bow = list()
+        text = cleaning_and_stemming(text.lower(), stemming=False, stopword=False)
         for v in vocabulary:
             if str(mode) == 'count':
-                for t in cleaning_and_stemming(text.lower(), stemming=False, stopword=False):
+                for t in text:
                     if str(t) == str(v):
                         count += 1
                 bow.append(count)
                 count = 0
             if str(mode) == 'binary':
-                if str(v) in cleaning_and_stemming(text.lower(), stemming=False, stopword=False):
+                if str(v) in text:
                     bow.append(1)
                 else:
                     bow.append(0)
+            if str(mode) == 'freq':
+                for t in text:
+                    if str(t) == str(v):
+                        count += 1
+                bow.append(count / float(len(text)))
+                count = 0
         bows.append(bow)
 
     return np.asanyarray(bows)
@@ -80,7 +87,7 @@ def demo():
     text_2 = "John also likes to watch football games."
     text_3 = "The quick brown fox jumps over the lazy dog."
     text_4 = "Never jump over the lazy dog quickly."
-    print "Manual Bag Of Words :\n", bag_of_words([text_1, text_2, text_3, text_4], mode='binary')
+    print "Manual Bag Of Words :\n", bag_of_words([text_1, text_2, text_3, text_4], mode='count')
     print "\nScikit-Learn Bag Of Words :\n", bag_of_words_with_scikit_learn([text_1, text_2, text_3, text_4])
 
 

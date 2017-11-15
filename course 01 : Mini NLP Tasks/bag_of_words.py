@@ -31,12 +31,22 @@ import numpy as np
 
 
 def bag_of_words_with_scikit_learn(texts):
+    """
+
+    :param texts: list of sentences
+    :return: bag of words (type: numpy ndarray)
+    """
     vectorizer = CountVectorizer()
     X = vectorizer.fit_transform(texts)
     return X.toarray()
 
 
 def bag_of_words(texts):
+    """
+
+    :param texts: list of sentences
+    :return: bag of words (type: numpy ndarray)
+    """
     corpus = cleaning_and_stemming(str(' '.join(texts)).lower(), stemming=False, stopword=False)
     labels = sorted(set(corpus))
     indexes = range(0, len(labels))
